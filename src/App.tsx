@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ChakraProvider, Image, Stack } from '@chakra-ui/react';
+import { Box, Image, Stack } from '@chakra-ui/react';
 import logo from './assets/logo.svg';
 import Styleguide from './Styleguide';
 import Home from './components/molecules/GenerateURL';
