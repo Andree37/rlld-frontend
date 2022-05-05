@@ -1,17 +1,15 @@
 import React from 'react';
 import { Box, Image, Stack } from '@chakra-ui/react';
 import logo from './assets/logo.svg';
-import Styleguide from './Styleguide';
+import './App.css';
 import Home from './components/molecules/GenerateURL';
 
 function App() {
     return (
-        <Box margin={5}>
-            <Stack
-                paddingBottom={Styleguide.overlay.spacing}
-                alignItems="baseline"
-            >
+        <Box m="5">
+            <Stack alignItems="baseline">
                 <Image
+                    className="App-logo"
                     src={logo}
                     style={{
                         height: 60,

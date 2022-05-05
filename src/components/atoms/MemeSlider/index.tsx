@@ -3,12 +3,12 @@ import {
     SliderFilledTrack,
     SliderThumb,
     SliderTrack,
-    Tooltip,
     Text,
     Center,
 } from '@chakra-ui/react';
 import React from 'react';
 import Styleguide from '../../../Styleguide';
+import EmojiBar from '../EmojiBar';
 
 const DEFAULT_SLIDER_VALUE = 30;
 
@@ -23,43 +23,41 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
     setValue,
     defaultValue = DEFAULT_SLIDER_VALUE,
 }) => {
-    const [showTooltip, setShowTooltip] = React.useState(false);
     return (
         <>
             <Center>
-                <Text fontWeight={800}>{value}%</Text>
+                <Text fontSize={24} fontWeight={1000}>
+                    {value}%
+                </Text>
             </Center>
-            <Slider
-                aria-label="slider-ex-4"
-                defaultValue={defaultValue}
-                onChange={(v) => setValue(v)}
-                onMouseEnter={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
-            >
-                <SliderTrack
-                    bg="white"
-                    borderWidth="1px"
-                    h="20px"
-                    borderRadius="lg"
+            <Center>
+                <Slider
+                    w="95%"
+                    aria-label="slider-ex-4"
+                    defaultValue={defaultValue}
+                    onChange={(v) => setValue(v)}
                 >
-                    <SliderFilledTrack bg={Styleguide.color.lightAndre} />
-                </SliderTrack>
-                <Tooltip
-                    hasArrow={false}
-                    bg="teal.500"
-                    color="white"
-                    placement="bottom"
-                    isOpen={showTooltip}
-                    label={`${value}%`}
-                >
+                    <SliderTrack
+                        bg="white"
+                        borderWidth="1px"
+                        h="25px"
+                        borderRadius="lg"
+                    >
+                        <SliderFilledTrack
+                            bg={Styleguide.color.lightAndre}
+                        ></SliderFilledTrack>
+                    </SliderTrack>
+                    <div style={{ width: `${value}%`, overflow: 'hidden' }}>
+                        <EmojiBar />
+                    </div>
                     <SliderThumb
                         _focus={{ outline: 'none' }}
-                        boxSize={10}
+                        boxSize={45}
                         outline="none"
                         bgColor={Styleguide.color.purpleAndre}
                     />
-                </Tooltip>
-            </Slider>
+                </Slider>
+            </Center>
         </>
     );
 };
