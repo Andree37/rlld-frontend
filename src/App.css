@@ -1,3 +1,15 @@
+html {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('./assets/bg.png');
+    background-position: 'center';
+    background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap');
+
+
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-zoom 8s ease infinite;

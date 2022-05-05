@@ -37,18 +37,20 @@ const GenerateURL: React.FC = () => {
     }, [memePrctg]);
 
     return (
-        <CardTemplate
-            top={top}
-            bot={bot}
-            button={{
-                title: 'Generate rlld!',
-                icon: <CopyIcon w={10} h={10} />,
-                onClick: () => {
-                    // eslint-disable-next-line no-console
-                    console.log(url);
-                },
-            }}
-        />
+        <>
+            <CardTemplate
+                top={top}
+                bot={bot}
+                button={{
+                    title: 'Generate rlld!',
+                    icon: <CopyIcon w={10} h={10} />,
+                    onClick: () => {
+                        // eslint-disable-next-line no-console
+                        console.log(url);
+                    },
+                }}
+            />
+        </>
     );
 };
 
