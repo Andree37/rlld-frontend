@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, ChakraProvider, Image, Stack } from '@chakra-ui/react';
+import logo from './assets/logo.svg';
+import Styleguide from './Styleguide';
+import Home from './components/molecules/GenerateURL';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Box margin={5}>
+            <Stack
+                paddingBottom={Styleguide.overlay.spacing}
+                alignItems="baseline"
+            >
+                <Image
+                    src={logo}
+                    style={{
+                        height: 60,
+                        pointerEvents: 'none',
+                    }}
+                    alt="logo"
+                />
+                <Home />
+            </Stack>
+        </Box>
+    );
 }
 
 export default App;
