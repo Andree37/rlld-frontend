@@ -59,6 +59,11 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                     },
                 }}
             />
+            <Text color="white" fontWeight={100} fontSize="xs" mt="2">
+                By clicking Generate rlld, I agree to the{' '}
+                <strong>Terms of Service</strong>,
+                <strong>Privacy Policy</strong> and Use of Cookies.
+            </Text>
         </>
     );
 };

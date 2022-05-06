@@ -26,7 +26,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
     return (
         <>
             <Center>
-                <Text fontSize={24} fontWeight={1000}>
+                <Text fontSize={24} fontWeight={1000} color="black">
                     {value}%
                 </Text>
             </Center>
