@@ -11,5 +11,6 @@ export default Object.freeze({
     color: {
         purpleAndre: '#7B61FF',
         lightAndre: '#A5A6F6',
+        darkUI: '#3D3D3D',
     },
 });

@@ -1,5 +1,6 @@
 import { Button, Text } from '@chakra-ui/react';
 import React, { JSXElementConstructor, ReactElement } from 'react';
+import { useURL } from '../../../contexts/URL';
 import Styleguide from '../../../Styleguide';
 
 export type OutlineButtonProps = {
@@ -8,6 +9,9 @@ export type OutlineButtonProps = {
     primaryColor?: string;
     secondaryColor?: string;
     onClick: () => void;
+    h?: number;
+    w?: number;
+    fontSize?: number;
 };
 
 const OutlineButton: React.FC<OutlineButtonProps> = ({
@@ -16,11 +20,20 @@ const OutlineButton: React.FC<OutlineButtonProps> = ({
     primaryColor = Styleguide.color.purpleAndre,
     secondaryColor = Styleguide.color.purpleAndre,
     onClick,
+    h = Styleguide.overlay.button.hSize,
+    w = Styleguide.overlay.button.wSize,
+    fontSize = 24,
 }) => {
+    const { state } = useURL();
+
     return (
         <Button
-            h={Styleguide.overlay.button.hSize}
-            w={Styleguide.overlay.button.wSize}
+            isLoading={
+                state.urls.length > 1 &&
+                !!state.urls[state.urls.length - 1].shortId
+            }
+            h={h}
+            w={w}
             variant="outline"
             fontWeight="semibold"
             color={primaryColor}
@@ -34,6 +47,7 @@ const OutlineButton: React.FC<OutlineButtonProps> = ({
             _focus={{ outline: 'none' }}
             leftIcon={icon}
             onClick={onClick}
+            fontSize={fontSize}
         >
             <Text>{title}</Text>
         </Button>

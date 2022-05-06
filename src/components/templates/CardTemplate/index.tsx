@@ -1,7 +1,9 @@
-import { Box, Stack, Center, Spacer } from '@chakra-ui/react';
+import { Box, Stack, Center, useToast } from '@chakra-ui/react';
 import React, { JSXElementConstructor, ReactElement, ReactNode } from 'react';
 import OutlineButton from '../../atoms/OutlineButton';
 import Styleguide from '../../../Styleguide';
+import { CopyIcon } from '@chakra-ui/icons';
+import { useURL } from '../../../contexts/URL';
 
 export type CardTemplateProps = {
     top: ReactNode;
@@ -12,6 +14,7 @@ export type CardTemplateProps = {
         icon?: ReactElement<any, string | JSXElementConstructor<any>>;
         onClick?: () => void;
     };
+    generated: boolean;
     backgroundColor?: string;
 };
 
@@ -20,34 +23,66 @@ const CardTemplate: React.FC<CardTemplateProps> = ({
     bot,
     button,
     backgroundColor = 'white',
-}) => (
-    // TODO: Make the URL input checkable for stuff
-    <Box
-        width="full"
-        height="full"
-        borderWidth="1px"
-        borderRadius="lg"
-        backgroundColor={backgroundColor}
-    >
-        <Stack
-            spacing={Styleguide.overlay.spacing}
-            padding={[
-                Styleguide.overlay.padding,
-                Styleguide.overlay.padding * 2,
-            ]}
+    generated = false,
+}) => {
+    const { state } = useURL();
+    const toast = useToast();
+    return (
+        <Box
+            width="full"
+            height="full"
+            borderWidth="1px"
+            borderRadius="lg"
+            backgroundColor={backgroundColor}
         >
-            {top}
-            {bot}
-            {button && (
-                <Center>
-                    <OutlineButton
-                        title={button.title}
-                        icon={button.icon}
-                        onClick={button.onClick!}
-                    />
-                </Center>
-            )}
-        </Stack>
-    </Box>
-);
+            <Stack
+                spacing={Styleguide.overlay.spacing}
+                padding={[
+                    Styleguide.overlay.padding,
+                    Styleguide.overlay.padding * 2,
+                ]}
+            >
+                {top}
+                {bot}
+                {button && !generated ? (
+                    <Center>
+                        <OutlineButton
+                            title={button.title}
+                            onClick={button.onClick!}
+                            fontSize={26}
+                        />
+                    </Center>
+                ) : (
+                    <Center>
+                        <OutlineButton
+                            title="Copy rlld"
+                            onClick={() => {
+                                if (state.urls.length > 0) {
+                                    const id = 1;
+                                    const s = `http://localhost:8080/${
+                                        state.urls[state.urls.length - 1]
+                                            .shortId
+                                    }`;
+                                    navigator.clipboard.writeText(s);
+                                    if (!toast.isActive(id)) {
+                                        toast({
+                                            id,
+                                            title: 'Copied rlld!',
+                                            description: s,
+                                            status: 'info',
+                                            duration: 4000,
+                                            isClosable: true,
+                                            position: 'top',
+                                        });
+                                    }
+                                }
+                            }}
+                            icon={<CopyIcon w={10} h={10} />}
+                        />
+                    </Center>
+                )}
+            </Stack>
+        </Box>
+    );
+};
 export default CardTemplate;

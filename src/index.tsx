@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import {
     ChakraProvider,
@@ -9,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { URLProvider } from './contexts/URL';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
@@ -26,7 +28,13 @@ root.render(
     <StrictMode>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <ChakraProvider theme={theme}>
-            <App />
+            <URLProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<App />} />
+                    </Routes>
+                </BrowserRouter>
+            </URLProvider>
         </ChakraProvider>
     </StrictMode>
 );

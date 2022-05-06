@@ -10,12 +10,10 @@ export type MainProps = {
 
 const Main: React.FC<MainProps> = ({ generateRef }) => {
     return (
-        <Box>
-            <Box m="5">
-                <Stack alignItems="baseline">
-                    <GenerateURL reference={generateRef} />
-                </Stack>
-            </Box>
+        <Box m="5">
+            <Stack alignItems="baseline">
+                <GenerateURL reference={generateRef} />
+            </Stack>
         </Box>
     );
 };
