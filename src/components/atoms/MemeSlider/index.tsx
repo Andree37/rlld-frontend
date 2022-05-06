@@ -42,6 +42,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
                         borderWidth="1px"
                         h="25px"
                         borderRadius="lg"
+                        borderColor="gray.200"
                     >
                         <SliderFilledTrack
                             bg={Styleguide.color.lightAndre}

@@ -1,25 +1,30 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import {
+    ChakraProvider,
+    extendTheme,
+    ColorModeScript,
+    ThemeConfig,
+} from '@chakra-ui/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
-// remove unwanted white background
+const config: ThemeConfig = {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+};
+
 const theme = extendTheme({
-    styles: {
-        global: () => ({
-            body: {
-                bg: '',
-            },
-        }),
-    },
+    config,
+    styles: { global: () => ({ body: { bg: '' } }) },
 });
 
 root.render(
     <StrictMode>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <ChakraProvider theme={theme}>
             <App />
         </ChakraProvider>
