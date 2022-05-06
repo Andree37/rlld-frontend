@@ -4,8 +4,8 @@ import Main from './pages/main';
 import Header from './components/molecules/Header';
 import Mission from './components/molecules/Mission';
 import { useURL } from './contexts/URL';
-import { Box, Center, Input, Stack, Text } from '@chakra-ui/react';
-import Styleguide from './Styleguide';
+import { Box } from '@chakra-ui/react';
+
 import OutlineButton from './components/atoms/OutlineButton';
 
 function App() {
@@ -14,11 +14,7 @@ function App() {
     const myRef = useRef();
     const careersRef = useRef();
 
-    const { state, showCopy } = useURL();
-
-    // change the button from submit to copy
-
-    // change from mission to two buttons that "check my rllds" and "shorten another"
+    const { showCopy } = useURL();
 
     // if press shorten another -> go back to initial state
 
