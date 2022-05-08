@@ -33,13 +33,23 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
     } = useURL();
 
     const isValidURL = useMemo(() => {
-        const expression =
-            /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        const expression = /([^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi;
         const regex = new RegExp(expression);
 
         const m = url.match(regex)?.length;
 
-        return url.length == 0 || (m && m > 0 && url.length > 0);
+        const s = url.includes(' ');
+
+        const l = url
+            .replaceAll('http://', '')
+            .replaceAll('http://', '')
+            .replaceAll('http:', '')
+            .replaceAll('https:', '');
+
+        return (
+            url.length == 0 ||
+            (m && m > 0 && url.length > 0 && !s && l.split('.').length > 2)
+        );
     }, [url]);
 
     const top = useMemo(() => {
@@ -100,7 +110,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                                     title: 'Copied rlld!',
                                     description: s,
                                     status: 'info',
-                                    duration: 4000,
+                                    duration: 2000,
                                     isClosable: true,
                                     position: 'top',
                                 });
@@ -126,8 +136,16 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
     const onClick = useCallback(() => {
         if (isValidURL && url.length > 0) {
             setHasPressed(true);
+            let link = url
+                .replaceAll('http://', '')
+                .replaceAll('http://', '')
+                .replaceAll('http:', '')
+                .replaceAll('https:', '');
+
+            link = 'https://' + link;
             generateURL({
-                link: url,
+                // make this better somehow
+                link,
                 memePrctg,
                 dateCreated: new Date(),
             });

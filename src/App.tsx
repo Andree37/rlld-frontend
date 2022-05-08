@@ -16,6 +16,8 @@ function App() {
 
     const { showCopy, setHasPressed, setURL } = useURL();
 
+    // REDO THE URL VALIDATION ON FRONTEND AND BACKEND LEL
+
     // if press my rlld -> navigate to my rlld XXXXXXXXX
 
     return (
