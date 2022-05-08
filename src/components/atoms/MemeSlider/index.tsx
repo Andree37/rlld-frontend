@@ -11,19 +11,12 @@ import React from 'react';
 import Styleguide from '../../../Styleguide';
 import EmojiBar from '../EmojiBar';
 
-const DEFAULT_SLIDER_VALUE = 30;
-
 export type MemeSliderProps = {
     value: number;
     setValue: (value: number) => void;
-    defaultValue?: number;
 };
 
-const MemeSlider: React.FC<MemeSliderProps> = ({
-    value,
-    setValue,
-    defaultValue = DEFAULT_SLIDER_VALUE,
-}) => {
+const MemeSlider: React.FC<MemeSliderProps> = ({ value, setValue }) => {
     return (
         <Box>
             <Center>
@@ -35,7 +28,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
                 <Slider
                     w="95%"
                     aria-label="slider-ex-4"
-                    defaultValue={defaultValue}
+                    defaultValue={value}
                     onChange={(v) => setValue(v)}
                 >
                     <SliderTrack

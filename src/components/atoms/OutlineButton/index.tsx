@@ -30,7 +30,7 @@ const OutlineButton: React.FC<OutlineButtonProps> = ({
         <Button
             isLoading={
                 state.urls.length > 1 &&
-                !!state.urls[state.urls.length - 1].shortId
+                !state.urls[state.urls.length - 1].shortId
             }
             h={h}
             w={w}

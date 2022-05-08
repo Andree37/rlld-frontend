@@ -14,9 +14,7 @@ function App() {
     const myRef = useRef();
     const careersRef = useRef();
 
-    const { showCopy } = useURL();
-
-    // if press shorten another -> go back to initial state
+    const { showCopy, setHasPressed, setURL } = useURL();
 
     // if press my rlld -> navigate to my rlld XXXXXXXXX
 
@@ -50,7 +48,10 @@ function App() {
                         title="Shorten another"
                         primaryColor="white"
                         secondaryColor="white"
-                        onClick={() => {}}
+                        onClick={() => {
+                            setHasPressed(false);
+                            setURL('');
+                        }}
                         w={44}
                         fontSize={20}
                     />

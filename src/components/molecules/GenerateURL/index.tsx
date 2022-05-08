@@ -8,7 +8,7 @@ import {
     useToast,
     Box,
 } from '@chakra-ui/react';
-import React, { MutableRefObject, useCallback, useMemo, useState } from 'react';
+import React, { MutableRefObject, useCallback, useMemo } from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
 import CardTemplate from '../../templates/CardTemplate';
 import Styleguide from '../../../Styleguide';
@@ -21,10 +21,16 @@ export type GenerateURLProps = {
 
 const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
     const toast = useToast();
-    const { state, generateURL, setHasPressed, showCopy } = useURL();
-
-    const [memePrctg, setMemePrctg] = useState(state._INITIAL_MEME_PRCTG);
-    const [url, setURL] = useState('');
+    const {
+        state,
+        generateURL,
+        setHasPressed,
+        showCopy,
+        url,
+        setURL,
+        memePrctg,
+        setMemePrctg,
+    } = useURL();
 
     const isValidURL = useMemo(() => {
         const expression =
@@ -42,6 +48,15 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                 <Text fontSize="xl" color="black" ref={reference}>
                     Enter your URL to generate your rlld
                 </Text>
+                {!isValidURL && (
+                    <Alert status="error" bgColor={Styleguide.color.darkUI}>
+                        <AlertIcon />
+                        <AlertTitle>Invalid URL</AlertTitle>
+                        <AlertDescription>
+                            Please ensure you have inserted a correct URL.
+                        </AlertDescription>
+                    </Alert>
+                )}
                 <Input
                     isInvalid={!isValidURL}
                     color={Styleguide.color.purpleAndre}
@@ -54,18 +69,9 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                     borderColor="gray.200"
                     disabled={showCopy}
                 />
-                {!isValidURL && (
-                    <Alert status="error" bgColor={Styleguide.color.darkUI}>
-                        <AlertIcon />
-                        <AlertTitle>Invalid URL</AlertTitle>
-                        <AlertDescription>
-                            Please ensure you have inserted a correct URL.
-                        </AlertDescription>
-                    </Alert>
-                )}
             </Box>
         );
-    }, [isValidURL, reference, showCopy, url]);
+    }, [isValidURL, reference, setURL, showCopy, url]);
 
     const bot = useMemo(() => {
         if (showCopy) {
@@ -115,14 +121,31 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                 </Box>
             );
         }
-    }, [memePrctg, showCopy, state.urls, toast]);
+    }, [memePrctg, setMemePrctg, showCopy, state.urls, toast]);
 
     const onClick = useCallback(() => {
         if (isValidURL && url.length > 0) {
             setHasPressed(true);
-            generateURL({ link: url, memePrctg, dateCreated: new Date() });
+            generateURL({
+                link: url,
+                memePrctg,
+                dateCreated: new Date(),
+            });
+        } else {
+            const id = 2;
+            if (!toast.isActive(id)) {
+                toast({
+                    id,
+                    title: 'Error',
+                    description: 'Please fill in URL correctly',
+                    status: 'error',
+                    duration: 2000,
+                    isClosable: true,
+                    position: 'top',
+                });
+            }
         }
-    }, [generateURL, isValidURL, memePrctg, setHasPressed, url]);
+    }, [generateURL, isValidURL, memePrctg, setHasPressed, toast, url]);
 
     return (
         <Box>

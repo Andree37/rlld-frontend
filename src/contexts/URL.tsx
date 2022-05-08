@@ -24,6 +24,10 @@ export type ContextProps = {
     generateURL: (args: URLType) => void;
     showCopy: boolean;
     setHasPressed: (args: boolean) => void;
+    setURL: (args: string) => void;
+    url: string;
+    memePrctg: number;
+    setMemePrctg: (args: number) => void;
 };
 
 const URLContext = createContext<ContextProps>({
@@ -31,6 +35,10 @@ const URLContext = createContext<ContextProps>({
     generateURL: () => {},
     showCopy: false,
     setHasPressed: () => {},
+    setURL: () => {},
+    url: '',
+    memePrctg: 30,
+    setMemePrctg: () => {},
 });
 
 export const URLProvider: React.FC<PotatoType> = ({ children }) => {
@@ -38,9 +46,12 @@ export const URLProvider: React.FC<PotatoType> = ({ children }) => {
     const { postURL } = useAPI();
     const [hasPressed, setHasPressed] = useState(false);
 
+    const [memePrctg, setMemePrctg] = useState(state._INITIAL_MEME_PRCTG);
+    const [url, setURL] = useState('');
+
     const showCopy = useMemo(() => {
         return hasPressed && state.urls.length > 0;
-    }, [hasPressed, state]);
+    }, [hasPressed, state.urls]);
 
     const generateURL = useCallback(
         async (args: URLType) => {
@@ -56,8 +67,17 @@ export const URLProvider: React.FC<PotatoType> = ({ children }) => {
     );
 
     const urlProps = useMemo(() => {
-        return { state, generateURL, showCopy, setHasPressed };
-    }, [state, generateURL, showCopy]);
+        return {
+            state,
+            generateURL,
+            showCopy,
+            setHasPressed,
+            url,
+            setURL,
+            memePrctg,
+            setMemePrctg,
+        };
+    }, [state, generateURL, showCopy, url, memePrctg]);
 
     return (
         <URLContext.Provider value={urlProps}>{children}</URLContext.Provider>
