@@ -5,6 +5,7 @@ import {
     SliderTrack,
     Text,
     Center,
+    Box,
 } from '@chakra-ui/react';
 import React from 'react';
 import Styleguide from '../../../Styleguide';
@@ -24,7 +25,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
     defaultValue = DEFAULT_SLIDER_VALUE,
 }) => {
     return (
-        <>
+        <Box>
             <Center>
                 <Text fontSize={24} fontWeight={1000} color="black">
                     {value}%
@@ -59,7 +60,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
                     />
                 </Slider>
             </Center>
-        </>
+        </Box>
     );
 };
 

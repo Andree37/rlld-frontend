@@ -6,6 +6,7 @@ import {
     AlertTitle,
     AlertDescription,
     useToast,
+    Box,
 } from '@chakra-ui/react';
 import React, { MutableRefObject, useCallback, useMemo, useState } from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
@@ -37,7 +38,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
 
     const top = useMemo(() => {
         return (
-            <>
+            <Box>
                 <Text fontSize="xl" color="black" ref={reference}>
                     Enter your URL to generate your rlld
                 </Text>
@@ -62,14 +63,14 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                         </AlertDescription>
                     </Alert>
                 )}
-            </>
+            </Box>
         );
     }, [isValidURL, reference, showCopy, url]);
 
     const bot = useMemo(() => {
         if (showCopy) {
             return (
-                <>
+                <Box>
                     <Text fontSize="xl" color="black">
                         Generated rlld:
                     </Text>
@@ -102,16 +103,16 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                         onChange={() => {}}
                         borderColor={Styleguide.color.purpleAndre}
                     />
-                </>
+                </Box>
             );
         } else {
             return (
-                <>
+                <Box>
                     <Text fontSize="xl" color="black">
                         Meme Probability
                     </Text>
                     <MemeSlider value={memePrctg} setValue={setMemePrctg} />
-                </>
+                </Box>
             );
         }
     }, [memePrctg, showCopy, state.urls, toast]);
@@ -124,7 +125,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
     }, [generateURL, isValidURL, memePrctg, setHasPressed, url]);
 
     return (
-        <>
+        <Box>
             <CardTemplate
                 top={top}
                 bot={bot}
@@ -140,7 +141,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                 <strong>Terms of Service</strong>,
                 <strong>Privacy Policy</strong> and Use of Cookies.
             </Text>
-        </>
+        </Box>
     );
 };
 
