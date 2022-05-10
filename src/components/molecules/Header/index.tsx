@@ -7,15 +7,15 @@ import Styleguide from '../../../Styleguide';
 export type HeaderProps = {
     generateRef: MutableRefObject<any>;
     whatRef: MutableRefObject<any>;
-    myRef: MutableRefObject<any>;
     careersRef: MutableRefObject<any>;
+    setScreen: (s: string) => void;
 };
 
 const Header: React.FC<HeaderProps> = ({
     generateRef,
     whatRef,
-    myRef,
     careersRef,
+    setScreen,
 }) => {
     return (
         <HStack
@@ -36,8 +36,8 @@ const Header: React.FC<HeaderProps> = ({
             <BurgerMenu
                 generateRef={generateRef}
                 whatRef={whatRef}
-                myRef={myRef}
                 careersRef={careersRef}
+                setScreen={setScreen}
             />
         </HStack>
     );

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
 import Main from './pages/main';
 import Header from './components/molecules/Header';
@@ -7,12 +7,14 @@ import { useURL } from './contexts/URL';
 import { Box } from '@chakra-ui/react';
 
 import OutlineButton from './components/atoms/OutlineButton';
+import HistoryRlld from './components/molecules/HistoryRlld';
 
 function App() {
     const generateRef = useRef();
     const whatRef = useRef();
-    const myRef = useRef();
     const careersRef = useRef();
+
+    const [screen, setScreen] = useState('main');
 
     const { showCopy, setHasPressed, setURL } = useURL();
 
@@ -25,10 +27,14 @@ function App() {
             <Header
                 generateRef={generateRef}
                 whatRef={whatRef}
-                myRef={myRef}
                 careersRef={careersRef}
+                setScreen={setScreen}
             />
-            <Main generateRef={generateRef} />
+            {screen === 'my' ? (
+                <HistoryRlld setScreen={setScreen} />
+            ) : (
+                <Main generateRef={generateRef} />
+            )}
             {!showCopy ? (
                 <Mission reference={whatRef} />
             ) : (

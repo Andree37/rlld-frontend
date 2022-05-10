@@ -8,18 +8,16 @@ import {
     useToast,
     Box,
 } from '@chakra-ui/react';
-import React, { MutableRefObject, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
 import CardTemplate from '../../templates/CardTemplate';
 import Styleguide from '../../../Styleguide';
 import MemeSlider from '../../atoms/MemeSlider';
 import { useURL } from '../../../contexts/URL';
 
-export type GenerateURLProps = {
-    reference: MutableRefObject<any>;
-};
+export type GenerateURLProps = {};
 
-const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
+const GenerateURL: React.FC<GenerateURLProps> = () => {
     const toast = useToast();
     const {
         state,
@@ -55,7 +53,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
     const top = useMemo(() => {
         return (
             <Box>
-                <Text fontSize="xl" color="black" ref={reference}>
+                <Text fontSize="xl" color="black">
                     Enter your URL to generate your rlld
                 </Text>
                 {!isValidURL && (
@@ -81,7 +79,7 @@ const GenerateURL: React.FC<GenerateURLProps> = ({ reference }) => {
                 />
             </Box>
         );
-    }, [isValidURL, reference, setURL, showCopy, url]);
+    }, [isValidURL, setURL, showCopy, url]);
 
     const bot = useMemo(() => {
         if (showCopy) {

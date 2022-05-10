@@ -12,15 +12,15 @@ import Styleguide from '../../../Styleguide';
 export type BurgerMenuProps = {
     generateRef: MutableRefObject<any>;
     whatRef: MutableRefObject<any>;
-    myRef: MutableRefObject<any>;
     careersRef: MutableRefObject<any>;
+    setScreen: (s: string) => void;
 };
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({
     generateRef,
     whatRef,
-    myRef,
     careersRef,
+    setScreen,
 }) => {
     return (
         <Menu closeOnBlur closeOnSelect>
@@ -35,6 +35,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
             <MenuList backgroundColor="black" borderColor="black">
                 <MenuItem
                     onClick={() => {
+                        setScreen('main');
                         generateRef.current?.offsetTop &&
                             window.scrollTo(0, generateRef.current?.offsetTop);
                     }}
@@ -55,8 +56,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 </MenuItem>
                 <MenuItem
                     onClick={() => {
-                        myRef.current?.offsetTop &&
-                            window.scrollTo(0, myRef.current?.offsetTop);
+                        setScreen('my');
                     }}
                     _hover={{ bg: Styleguide.color.lightAndre }}
                     color="white"
