@@ -14,9 +14,14 @@ import EmojiBar from '../EmojiBar';
 export type MemeSliderProps = {
     value: number;
     setValue: (value: number) => void;
+    editable?: boolean;
 };
 
-const MemeSlider: React.FC<MemeSliderProps> = ({ value, setValue }) => {
+const MemeSlider: React.FC<MemeSliderProps> = ({
+    value,
+    setValue,
+    editable,
+}) => {
     return (
         <Box>
             <Center>
@@ -30,6 +35,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({ value, setValue }) => {
                     aria-label="slider-ex-4"
                     defaultValue={value}
                     onChange={(v) => setValue(v)}
+                    isReadOnly={!editable}
                 >
                     <SliderTrack
                         bg="white"
