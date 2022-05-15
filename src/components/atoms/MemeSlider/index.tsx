@@ -23,11 +23,13 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
     editable,
 }) => {
     return (
-        <Box>
+        <Box pointerEvents={editable ? 'auto' : 'none'}>
             <Center>
-                <Text fontSize={24} fontWeight={1000} color="black">
-                    {value}%
-                </Text>
+                {editable && (
+                    <Text fontSize={24} fontWeight={1000} color="black">
+                        {value}%
+                    </Text>
+                )}
             </Center>
             <Center>
                 <Slider
@@ -38,7 +40,7 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
                     isReadOnly={!editable}
                 >
                     <SliderTrack
-                        bg="white"
+                        bg="transparent"
                         borderWidth="1px"
                         h="25px"
                         borderRadius="lg"
@@ -47,16 +49,28 @@ const MemeSlider: React.FC<MemeSliderProps> = ({
                         <SliderFilledTrack
                             bg={Styleguide.color.lightAndre}
                         ></SliderFilledTrack>
+                        {!editable && (
+                            <Text textAlign="right" width={`${value + 15}%`}>
+                                {value}%
+                            </Text>
+                        )}
                     </SliderTrack>
-                    <div style={{ width: `${value}%`, overflow: 'hidden' }}>
+                    <div
+                        style={{
+                            width: `${value}%`,
+                            overflow: 'hidden',
+                        }}
+                    >
                         <EmojiBar />
                     </div>
-                    <SliderThumb
-                        _focus={{ outline: 'none' }}
-                        boxSize={45}
-                        outline="none"
-                        bgColor={Styleguide.color.purpleAndre}
-                    />
+                    {editable && (
+                        <SliderThumb
+                            _focus={{ outline: 'none' }}
+                            boxSize={45}
+                            outline="none"
+                            bgColor={Styleguide.color.purpleAndre}
+                        />
+                    )}
                 </Slider>
             </Center>
         </Box>

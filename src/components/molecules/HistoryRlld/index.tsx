@@ -1,9 +1,10 @@
-import { Box, Heading, Stack, Text, Button } from '@chakra-ui/react';
+import { Box, Heading, Stack, Text, Button, useToast } from '@chakra-ui/react';
 import React from 'react';
 import { useURL } from '../../../contexts/URL';
 import OutlineButton from '../../../components/atoms/OutlineButton';
 import Styleguide from '../../../Styleguide';
 import MemeSlider from '../../../components/atoms/MemeSlider';
+import { CopyIcon } from '@chakra-ui/icons';
 
 export type HistoryRlldProps = {
     setScreen: (s: string) => void;
@@ -11,6 +12,7 @@ export type HistoryRlldProps = {
 
 const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
     const { state } = useURL();
+    const toast = useToast();
     return (
         <>
             {state.urls.length == 0 ? (
@@ -70,14 +72,39 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                                 value={url.memePrctg}
                                 setValue={() => {}}
                             />
-                            <Box>
-                                <Text>Total rlld clicks</Text>
-                                <Text>1</Text>
+                            <Stack
+                                flexDirection="row"
+                                justifyContent="space-between"
+                            >
+                                <Stack alignItems="space-around">
+                                    <Text>Total rlld clicks</Text>
+                                    <Text fontSize="3xl">{1}</Text>
+                                </Stack>
                                 <OutlineButton
+                                    primaryColor="white"
+                                    secondaryColor="white"
+                                    w={40}
+                                    fontSize={16}
+                                    icon={<CopyIcon w={10} h={10} />}
                                     title="Copy RLLD!"
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                        const id = 1;
+                                        const s = `http://localhost:8080/${url.shortId}`;
+                                        navigator.clipboard.writeText(s);
+                                        if (!toast.isActive(id)) {
+                                            toast({
+                                                id,
+                                                title: 'Copied rlld!',
+                                                description: s,
+                                                status: 'info',
+                                                duration: 2000,
+                                                isClosable: true,
+                                                position: 'top',
+                                            });
+                                        }
+                                    }}
                                 ></OutlineButton>
-                            </Box>
+                            </Stack>
                         </Stack>
                     </Box>
                 ))

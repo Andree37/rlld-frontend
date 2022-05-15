@@ -35,11 +35,11 @@ const OutlineButton: React.FC<OutlineButtonProps> = ({
             h={h}
             w={w}
             variant="outline"
-            fontWeight="semibold"
+            fontWeight="bold"
             color={primaryColor}
             _hover={{
                 bg: secondaryColor,
-                color: 'white',
+                color: 'gray',
             }}
             borderColor={primaryColor}
             borderWidth={5}

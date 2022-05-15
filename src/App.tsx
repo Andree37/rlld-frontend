@@ -35,7 +35,7 @@ function App() {
             ) : (
                 <Main generateRef={generateRef} />
             )}
-            {!showCopy ? (
+            {!showCopy || screen == 'my' ? (
                 <Mission reference={whatRef} />
             ) : (
                 <Box
@@ -49,7 +49,9 @@ function App() {
                         title="My rrlds"
                         primaryColor="white"
                         secondaryColor="white"
-                        onClick={() => {}}
+                        onClick={() => {
+                            setScreen('my');
+                        }}
                         w={32}
                     />
                     <OutlineButton

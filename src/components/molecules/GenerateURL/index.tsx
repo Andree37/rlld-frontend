@@ -125,7 +125,11 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                     <Text fontSize="xl" color="black">
                         Meme Probability
                     </Text>
-                    <MemeSlider value={memePrctg} setValue={setMemePrctg} />
+                    <MemeSlider
+                        value={memePrctg}
+                        setValue={setMemePrctg}
+                        editable
+                    />
                 </Box>
             );
         }
