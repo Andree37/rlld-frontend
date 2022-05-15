@@ -8089,6 +8089,11 @@ react-remove-scroll@2.4.1:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
+react-roulette-pro@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-roulette-pro/-/react-roulette-pro-2.1.1.tgz#34e94e839fea9d50d03ee1b5cddcc6f47fb4eb32"
+  integrity sha512-sEQ/yV5ezmoodinRfGKp12/kc9AacYnJfTw7i/FCbUA8MvCRgnrWGyuYqvW/fJo6J/MgGFmwDPiYisrVZf6MfA==
+
 react-router-dom@6:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.3.0.tgz#a0216da813454e521905b5fa55e0e5176123f43d"
