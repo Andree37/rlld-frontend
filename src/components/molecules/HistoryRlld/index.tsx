@@ -66,7 +66,8 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                                 color={Styleguide.color.lightAndre}
                                 fontSize="xs"
                             >
-                                http://localhost:8080/{url.shortId}
+                                {process.env.REACT_APP_FRONTEND_URL}
+                                {url.shortId}
                             </Text>
                             <MemeSlider
                                 value={url.memePrctg}
@@ -89,7 +90,7 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                                     title="Copy RLLD!"
                                     onClick={() => {
                                         const id = 1;
-                                        const s = `http://localhost:8080/${url.shortId}`;
+                                        const s = `${process.env.REACT_APP_FRONTEND_URL}${url.shortId}`;
                                         navigator.clipboard.writeText(s);
                                         if (!toast.isActive(id)) {
                                             toast({

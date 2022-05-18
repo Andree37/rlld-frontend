@@ -1,0 +1,83 @@
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/RoulettePro/designs/GracefulLines/GracefulLines.css ***!
+  \**********************************************************************************************************************/
+/* Overrides */
+.roulette-pro-graceful-lines-design-wrapper-overrides {
+    padding: 33px 0 82px;
+}
+
+/* Top */
+.roulette-pro-graceful-lines-design-top {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: calc(50% - 6px);
+    transform: translateX(-50%) translateY(70%);
+    width: 408px;
+    height: 30px;
+    background-image: url('../../assets/top_roulette.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+/* Bottom */
+.roulette-pro-graceful-lines-design-bottom-line {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(-75%);
+    width: 408px;
+    height: 90px;
+    background-image: url('../../assets/bottom_roulette.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/*!*****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/RoulettePro/roulette.css ***!
+  \*****************************************************************************************/
+.roulette-pro-wrapper {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+}
+
+.roulette-pro-prize-list {
+    position: relative;
+    display: flex;
+    width: max-content;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* will-change: transform; */
+    /* transition: all 6s cubic-bezier(0.53, 0.08, 0.001, 0.5); */
+    left: 0;
+    will-change: left;
+}
+
+.roulette-pro-prize-list.with-animation {
+    animation: roulette-animation 100s linear infinite;
+}
+
+@keyframes roulette-animation {
+    0% {
+        /* transform: translateX(0); */
+        /* left: 0; */
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        /* transform: translateX(-3000px); */
+        /* left: -3000px; */
+        transform: translate3d(-3000px, 0, 0);
+    }
+}
+
+

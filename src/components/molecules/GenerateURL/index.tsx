@@ -92,13 +92,13 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                         color={Styleguide.color.purpleAndre}
                         _hover={{ borderColor: Styleguide.color.lightAndre }}
                         focusBorderColor={Styleguide.color.purpleAndre}
-                        value={`http://localhost:8080/${
+                        value={`${process.env.REACT_APP_FRONTEND_URL}${
                             state.urls[state.urls.length - 1].shortId
                         }`}
                         onFocus={(ev) => {
                             ev.target.select();
                             const id = 1;
-                            const s = `http://localhost:8080/${
+                            const s = `${process.env.REACT_APP_FRONTEND_URL}${
                                 state.urls[state.urls.length - 1].shortId
                             }`;
                             navigator.clipboard.writeText(s);

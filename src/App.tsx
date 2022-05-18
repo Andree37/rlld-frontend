@@ -8,7 +8,6 @@ import { Box } from '@chakra-ui/react';
 
 import OutlineButton from './components/atoms/OutlineButton';
 import HistoryRlld from './components/molecules/HistoryRlld';
-import Roulette from './pages/roulette';
 
 function App() {
     const generateRef = useRef();
@@ -31,7 +30,6 @@ function App() {
                 careersRef={careersRef}
                 setScreen={setScreen}
             />
-            <Roulette />
             {screen === 'my' ? (
                 <HistoryRlld setScreen={setScreen} />
             ) : (

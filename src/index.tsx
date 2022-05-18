@@ -1,16 +1,18 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import {
     ChakraProvider,
-    extendTheme,
     ColorModeScript,
+    extendTheme,
     ThemeConfig,
 } from '@chakra-ui/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { URLProvider } from './contexts/URL';
+import Roulette from './pages/roulette';
+
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
@@ -32,6 +34,7 @@ root.render(
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<App />} />
+                        <Route path="/:shortID" element={<Roulette />} />
                     </Routes>
                 </BrowserRouter>
             </URLProvider>
