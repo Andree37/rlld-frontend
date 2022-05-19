@@ -17,10 +17,9 @@ export const useAPI = (): APIProps => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ original_url, meme_prctg }),
         };
-        console.log('potato', `${process.env.REACT_APP_BACKEND_URL}url/tinify`);
 
         const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}url/tinify`,
+            `${process.env.REACT_APP_BACKEND_URL}tinify`,
             requestOptions
         );
         const data = await response.json();
