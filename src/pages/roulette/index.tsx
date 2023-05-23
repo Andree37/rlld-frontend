@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import RoulettePro from 'react-roulette-pro';
 import './roulette.css';
 import { useParams } from 'react-router-dom';
-import { Box, Center, Image } from '@chakra-ui/react';
+import { Center, Image } from '@chakra-ui/react';
 
 const prizes = [
     {
@@ -81,15 +81,7 @@ const Roulette = () => {
             <RoulettePro
                 prizes={prizeList}
                 prizeItemRenderFunction={(item: any, index: number) => {
-                    return (
-                        <Image
-                            key={`${index}`}
-                            src={item.image}
-                            alt={item.id}
-                            boxSize={220}
-                            objectFit="cover"
-                        />
-                    );
+                    return <Image key={`${index}`} src={item.image} alt={item.id} boxSize={220} objectFit="cover" />;
                 }}
                 prizeIndex={prizeIndex}
                 start={start}

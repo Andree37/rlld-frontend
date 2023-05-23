@@ -18,35 +18,24 @@ export type CardTemplateProps = {
     backgroundColor?: string;
 };
 
-const CardTemplate: React.FC<CardTemplateProps> = ({
-    top,
-    bot,
-    button,
-    backgroundColor = 'white',
-    generated = false,
-}) => {
+const CardTemplate: React.FC<CardTemplateProps> = ({ top, bot, button, backgroundColor = 'white', generated = false }) => {
     const { state } = useURL();
     const toast = useToast();
+    const url = `${process.env.REACT_APP_FRONTEND_URL}/${state.urls[state.urls.length - 1].shortId}`;
+
     return (
         <Stack
             borderWidth="1px"
             borderRadius="lg"
             backgroundColor={backgroundColor}
             spacing={Styleguide.overlay.spacing}
-            padding={[
-                Styleguide.overlay.padding,
-                Styleguide.overlay.padding * 2,
-            ]}
+            padding={[Styleguide.overlay.padding, Styleguide.overlay.padding * 2]}
         >
             {top}
             {bot}
             {button && !generated ? (
                 <Center>
-                    <OutlineButton
-                        title={button.title}
-                        onClick={button.onClick!}
-                        fontSize={26}
-                    />
+                    <OutlineButton title={button.title} onClick={button.onClick!} fontSize={26} />
                 </Center>
             ) : (
                 <Center>
@@ -55,14 +44,13 @@ const CardTemplate: React.FC<CardTemplateProps> = ({
                         onClick={() => {
                             if (state.urls.length > 0) {
                                 const id = 1;
-                                const s = `${process.env.REACT_APP_FRONTEND_URL
-                                    }/${state.urls[state.urls.length - 1].shortId}`;
-                                navigator.clipboard.writeText(s);
+                                const content = url;
+                                navigator.clipboard.writeText(content);
                                 if (!toast.isActive(id)) {
                                     toast({
                                         id,
                                         title: 'Copied rlld!',
-                                        description: s,
+                                        description: content,
                                         status: 'info',
                                         duration: 4000,
                                         isClosable: true,
