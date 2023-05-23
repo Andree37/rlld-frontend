@@ -4,6 +4,7 @@ import RoulettePro from 'react-roulette-pro';
 import './roulette.css';
 import { useParams } from 'react-router-dom';
 import { Center, Image } from '@chakra-ui/react';
+import logo from '../../assets/logo.svg';
 
 const prizes = [
     {
@@ -77,25 +78,38 @@ const Roulette = () => {
     }, []);
 
     return (
-        <Center w={'100%'} h={'100%'}>
-            <RoulettePro
-                prizes={prizeList}
-                prizeItemRenderFunction={(item: any, index: number) => {
-                    return <Image key={`${index}`} src={item.image} alt={item.id} boxSize={220} objectFit="cover" />;
+        <>
+            <Image
+                className="App-logo"
+                src={logo}
+                style={{
+                    height: 60,
+                    pointerEvents: 'none',
+                    marginLeft: '10px',
+                    marginTop: '20px',
                 }}
-                prizeIndex={prizeIndex}
-                start={start}
-                onPrizeDefined={handlePrizeDefined}
-                spinningTime={3}
-                design="GracefulLines"
-                designOptions={{
-                    prizeItemWidth: 220,
-                    prizeItemHeight: 220,
-                    hideSideArrows: true,
-                    hideCenterDelimter: false,
-                }}
+                alt="logo"
             />
-        </Center>
+            <Center w={'100%'} h={'100%'}>
+                <RoulettePro
+                    prizes={prizeList}
+                    prizeItemRenderFunction={(item: any, index: number) => {
+                        return <Image key={`${index}`} src={item.image} alt={item.id} boxSize={220} objectFit="cover" />;
+                    }}
+                    prizeIndex={prizeIndex}
+                    start={start}
+                    onPrizeDefined={handlePrizeDefined}
+                    spinningTime={3}
+                    design="GracefulLines"
+                    designOptions={{
+                        prizeItemWidth: 220,
+                        prizeItemHeight: 220,
+                        hideSideArrows: true,
+                        hideCenterDelimter: false,
+                    }}
+                />
+            </Center>
+        </>
     );
 };
 
