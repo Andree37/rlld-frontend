@@ -51,10 +51,12 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                                 </Text>
                             </Stack>
                             <Text color={Styleguide.color.lightAndre} fontSize="xs">
-                                {process.env.REACT_APP_FRONTEND_URL}
-                                {url.shortId}
+                                {`${process.env.REACT_APP_FRONTEND_URL}/${url.shortId}`}
                             </Text>
-                            <MemeSlider value={url.memePrctg} setValue={() => {}} />
+                            {
+                                // eslint-disable-next-line prettier/prettier
+                                <MemeSlider value={url.memePrctg} setValue={() => { }} />
+                            }
                             <Stack flexDirection="row" justifyContent="space-between">
                                 <Stack alignItems="space-around">
                                     <Text>Total rlld clicks</Text>
@@ -69,7 +71,7 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                                     title="Copy RLLD!"
                                     onClick={() => {
                                         const id = 1;
-                                        const s = `${process.env.REACT_APP_FRONTEND_URL}${url.shortId}`;
+                                        const s = `${process.env.REACT_APP_FRONTEND_URL}/${url.shortId}`;
                                         navigator.clipboard.writeText(s);
                                         if (!toast.isActive(id)) {
                                             toast({

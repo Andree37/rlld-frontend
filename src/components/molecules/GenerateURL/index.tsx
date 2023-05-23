@@ -65,11 +65,11 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                         color={Styleguide.color.purpleAndre}
                         _hover={{ borderColor: Styleguide.color.lightAndre }}
                         focusBorderColor={Styleguide.color.purpleAndre}
-                        value={`${process.env.REACT_APP_FRONTEND_URL}${state.urls[state.urls.length - 1].shortId}`}
+                        value={`${process.env.REACT_APP_FRONTEND_URL}/${state.urls[state.urls.length - 1].shortId}`}
                         onFocus={(ev) => {
                             ev.target.select();
                             const id = 1;
-                            const s = `${process.env.REACT_APP_FRONTEND_URL}${state.urls[state.urls.length - 1].shortId}`;
+                            const s = `${process.env.REACT_APP_FRONTEND_URL}/${state.urls[state.urls.length - 1].shortId}`;
                             navigator.clipboard.writeText(s);
                             if (!toast.isActive(id)) {
                                 toast({
@@ -83,7 +83,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                                 });
                             }
                         }}
-                        onChange={() => {}}
+                        onChange={() => { }}
                         borderColor={Styleguide.color.purpleAndre}
                     />
                 </Box>
