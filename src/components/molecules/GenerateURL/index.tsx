@@ -83,6 +83,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                                 });
                             }
                         }}
+                        // eslint-disable-next-line prettier/prettier
                         onChange={() => { }}
                         borderColor={Styleguide.color.purpleAndre}
                     />
