@@ -13,7 +13,6 @@ html {
     height: 100vh;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-zoom 8s ease infinite;

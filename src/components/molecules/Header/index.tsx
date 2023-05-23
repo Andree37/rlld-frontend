@@ -11,19 +11,9 @@ export type HeaderProps = {
     setScreen: (s: string) => void;
 };
 
-const Header: React.FC<HeaderProps> = ({
-    generateRef,
-    whatRef,
-    careersRef,
-    setScreen,
-}) => {
+const Header: React.FC<HeaderProps> = ({ generateRef, whatRef, careersRef, setScreen }) => {
     return (
-        <HStack
-            direction="row"
-            justifyContent="space-between"
-            width="100%"
-            padding={Styleguide.overlay.padding * 1}
-        >
+        <HStack direction="row" justifyContent="space-between" width="100%" padding={Styleguide.overlay.padding * 1}>
             <Image
                 className="App-logo"
                 src={logo}
@@ -33,12 +23,7 @@ const Header: React.FC<HeaderProps> = ({
                 }}
                 alt="logo"
             />
-            <BurgerMenu
-                generateRef={generateRef}
-                whatRef={whatRef}
-                careersRef={careersRef}
-                setScreen={setScreen}
-            />
+            <BurgerMenu generateRef={generateRef} whatRef={whatRef} careersRef={careersRef} setScreen={setScreen} />
         </HStack>
     );
 };

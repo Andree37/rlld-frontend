@@ -1,19 +1,6 @@
-import React, {
-    createContext,
-    ReactNode,
-    useCallback,
-    useContext,
-    useMemo,
-    useState,
-} from 'react';
+import React, { createContext, ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { useAPI } from '../hooks/useAPI';
-import {
-    initialState,
-    State,
-    Types,
-    URLType,
-    useURLReducer,
-} from '../reducers/URL';
+import { initialState, State, Types, URLType, useURLReducer } from '../reducers/URL';
 
 type PotatoType = {
     children?: ReactNode;
@@ -79,9 +66,7 @@ export const URLProvider: React.FC<PotatoType> = ({ children }) => {
         };
     }, [state, generateURL, showCopy, url, memePrctg]);
 
-    return (
-        <URLContext.Provider value={urlProps}>{children}</URLContext.Provider>
-    );
+    return <URLContext.Provider value={urlProps}>{children}</URLContext.Provider>;
 };
 
 export const useURL = () => useContext(URLContext);

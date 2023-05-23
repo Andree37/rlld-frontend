@@ -32,12 +32,7 @@ export const initialState: State = {
 const reducer: Reducer<State, Action> = (prevState, action) => {
     switch (action.type) {
         case Types.GENERATE:
-            if (
-                action.link &&
-                action.memePrctg &&
-                action.dateCreated &&
-                action.shortId
-            ) {
+            if (action.link && action.memePrctg && action.dateCreated && action.shortId) {
                 return {
                     ...prevState,
                     urls: [
@@ -59,14 +54,8 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
     }
 };
 
-export const useURLReducer = (): [
-    ReducerState<Reducer<State, Action>>,
-    Dispatch<Action>
-] => {
-    const [state, dispatch] = useReducer<Reducer<State, Action>>(
-        reducer,
-        initialState
-    );
+export const useURLReducer = (): [ReducerState<Reducer<State, Action>>, Dispatch<Action>] => {
+    const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
     return [state, dispatch];
 };

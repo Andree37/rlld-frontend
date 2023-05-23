@@ -24,27 +24,12 @@ function App() {
 
     return (
         <>
-            <Header
-                generateRef={generateRef}
-                whatRef={whatRef}
-                careersRef={careersRef}
-                setScreen={setScreen}
-            />
-            {screen === 'my' ? (
-                <HistoryRlld setScreen={setScreen} />
-            ) : (
-                <Main generateRef={generateRef} />
-            )}
+            <Header generateRef={generateRef} whatRef={whatRef} careersRef={careersRef} setScreen={setScreen} />
+            {screen === 'my' ? <HistoryRlld setScreen={setScreen} /> : <Main generateRef={generateRef} />}
             {!showCopy || screen == 'my' ? (
                 <Mission reference={whatRef} />
             ) : (
-                <Box
-                    display="flex"
-                    backgroundColor="black"
-                    height="16%"
-                    justifyContent="space-between"
-                    p="5"
-                >
+                <Box display="flex" backgroundColor="black" height="16%" justifyContent="space-between" p="5">
                     <OutlineButton
                         title="My rrlds"
                         primaryColor="white"

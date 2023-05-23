@@ -21,7 +21,6 @@
     background-size: contain;
 }
 
-
 /* Bottom */
 .roulette-pro-graceful-lines-design-bottom-line {
     position: absolute;
@@ -79,5 +78,3 @@
         transform: translate3d(-3000px, 0, 0);
     }
 }
-
-

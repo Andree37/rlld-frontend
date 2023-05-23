@@ -1,13 +1,4 @@
-import {
-    Text,
-    Input,
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-    useToast,
-    Box,
-} from '@chakra-ui/react';
+import { Text, Input, Alert, AlertIcon, AlertTitle, AlertDescription, useToast, Box } from '@chakra-ui/react';
 import React, { useCallback, useMemo } from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
 import CardTemplate from '../../templates/CardTemplate';
@@ -19,16 +10,7 @@ export type GenerateURLProps = {};
 
 const GenerateURL: React.FC<GenerateURLProps> = () => {
     const toast = useToast();
-    const {
-        state,
-        generateURL,
-        setHasPressed,
-        showCopy,
-        url,
-        setURL,
-        memePrctg,
-        setMemePrctg,
-    } = useURL();
+    const { state, generateURL, setHasPressed, showCopy, url, setURL, memePrctg, setMemePrctg } = useURL();
 
     const isValidURL = useMemo(() => {
         const expression = /([^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi;
@@ -38,16 +20,9 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
 
         const s = url.includes(' ');
 
-        const l = url
-            .replaceAll('http://', '')
-            .replaceAll('http://', '')
-            .replaceAll('http:', '')
-            .replaceAll('https:', '');
+        const l = url.replaceAll('http://', '').replaceAll('http://', '').replaceAll('http:', '').replaceAll('https:', '');
 
-        return (
-            url.length == 0 ||
-            (m && m > 0 && url.length > 0 && !s && l.split('.').length > 2)
-        );
+        return url.length == 0 || (m && m > 0 && url.length > 0 && !s && l.split('.').length > 2);
     }, [url]);
 
     const top = useMemo(() => {
@@ -60,9 +35,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                     <Alert status="error" bgColor={Styleguide.color.darkUI}>
                         <AlertIcon />
                         <AlertTitle>Invalid URL</AlertTitle>
-                        <AlertDescription>
-                            Please ensure you have inserted a correct URL.
-                        </AlertDescription>
+                        <AlertDescription>Please ensure you have inserted a correct URL.</AlertDescription>
                     </Alert>
                 )}
                 <Input
@@ -92,15 +65,11 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                         color={Styleguide.color.purpleAndre}
                         _hover={{ borderColor: Styleguide.color.lightAndre }}
                         focusBorderColor={Styleguide.color.purpleAndre}
-                        value={`${process.env.REACT_APP_FRONTEND_URL}${
-                            state.urls[state.urls.length - 1].shortId
-                        }`}
+                        value={`${process.env.REACT_APP_FRONTEND_URL}${state.urls[state.urls.length - 1].shortId}`}
                         onFocus={(ev) => {
                             ev.target.select();
                             const id = 1;
-                            const s = `${process.env.REACT_APP_FRONTEND_URL}${
-                                state.urls[state.urls.length - 1].shortId
-                            }`;
+                            const s = `${process.env.REACT_APP_FRONTEND_URL}${state.urls[state.urls.length - 1].shortId}`;
                             navigator.clipboard.writeText(s);
                             if (!toast.isActive(id)) {
                                 toast({
@@ -125,11 +94,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                     <Text fontSize="xl" color="black">
                         Meme Probability
                     </Text>
-                    <MemeSlider
-                        value={memePrctg}
-                        setValue={setMemePrctg}
-                        editable
-                    />
+                    <MemeSlider value={memePrctg} setValue={setMemePrctg} editable />
                 </Box>
             );
         }
@@ -138,11 +103,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
     const onClick = useCallback(() => {
         if (isValidURL && url.length > 0) {
             setHasPressed(true);
-            let link = url
-                .replaceAll('http://', '')
-                .replaceAll('http://', '')
-                .replaceAll('http:', '')
-                .replaceAll('https:', '');
+            let link = url.replaceAll('http://', '').replaceAll('http://', '').replaceAll('http:', '').replaceAll('https:', '');
 
             link = 'https://' + link;
             generateURL({
@@ -180,9 +141,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                 generated={showCopy}
             />
             <Text color="white" fontWeight={100} fontSize="xs" mt="2">
-                By clicking Generate rlld, I agree to the{' '}
-                <strong>Terms of Service</strong>,
-                <strong>Privacy Policy</strong> and Use of Cookies.
+                By clicking Generate rlld, I agree to the <strong>Terms of Service</strong>,<strong>Privacy Policy</strong> and Use of Cookies.
             </Text>
         </Box>
     );

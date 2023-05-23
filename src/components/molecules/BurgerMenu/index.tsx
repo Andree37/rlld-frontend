@@ -1,11 +1,5 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
-import {
-    IconButton,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuList,
-} from '@chakra-ui/react';
+import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import React, { MutableRefObject } from 'react';
 import Styleguide from '../../../Styleguide';
 
@@ -16,12 +10,7 @@ export type BurgerMenuProps = {
     setScreen: (s: string) => void;
 };
 
-const BurgerMenu: React.FC<BurgerMenuProps> = ({
-    generateRef,
-    whatRef,
-    careersRef,
-    setScreen,
-}) => {
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ generateRef, whatRef, careersRef, setScreen }) => {
     return (
         <Menu closeOnBlur closeOnSelect>
             <MenuButton
@@ -36,8 +25,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 <MenuItem
                     onClick={() => {
                         setScreen('main');
-                        generateRef.current?.offsetTop &&
-                            window.scrollTo(0, generateRef.current?.offsetTop);
+                        generateRef.current?.offsetTop && window.scrollTo(0, generateRef.current?.offsetTop);
                     }}
                     _hover={{ bg: Styleguide.color.lightAndre }}
                     color="white"
@@ -46,8 +34,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 </MenuItem>
                 <MenuItem
                     onClick={() => {
-                        whatRef.current?.offsetTop &&
-                            window.scrollTo(0, whatRef.current?.offsetTop);
+                        whatRef.current?.offsetTop && window.scrollTo(0, whatRef.current?.offsetTop);
                     }}
                     _hover={{ bg: Styleguide.color.lightAndre }}
                     color="white"
@@ -65,8 +52,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 </MenuItem>
                 <MenuItem
                     onClick={() => {
-                        careersRef.current?.offsetTop &&
-                            window.scrollTo(0, careersRef.current?.offsetTop);
+                        careersRef.current?.offsetTop && window.scrollTo(0, careersRef.current?.offsetTop);
                     }}
                     _hover={{ bg: Styleguide.color.lightAndre }}
                     color="white"
