@@ -55,9 +55,8 @@ const CardTemplate: React.FC<CardTemplateProps> = ({
                         onClick={() => {
                             if (state.urls.length > 0) {
                                 const id = 1;
-                                const s = `${
-                                    process.env.REACT_APP_FRONTEND_URL
-                                }${state.urls[state.urls.length - 1].shortId}`;
+                                const s = `${process.env.REACT_APP_FRONTEND_URL
+                                    }/${state.urls[state.urls.length - 1].shortId}`;
                                 navigator.clipboard.writeText(s);
                                 if (!toast.isActive(id)) {
                                     toast({

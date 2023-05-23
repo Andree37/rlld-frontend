@@ -69,7 +69,7 @@ const Roulette = () => {
     const prizeIndex = WINNING_INDEX;
 
     const handlePrizeDefined = () => {
-        window.location.href = `${process.env.REACT_APP_BACKEND_URL}${params.shortID}`;
+        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/${params.shortID}`;
     };
 
     useEffect(() => {

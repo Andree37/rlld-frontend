@@ -19,7 +19,7 @@ export const useAPI = (): APIProps => {
         };
 
         const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}tinify`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/tinify`,
             requestOptions
         );
         const data = await response.json();
