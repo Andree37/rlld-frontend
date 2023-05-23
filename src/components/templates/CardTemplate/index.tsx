@@ -21,7 +21,6 @@ export type CardTemplateProps = {
 const CardTemplate: React.FC<CardTemplateProps> = ({ top, bot, button, backgroundColor = 'white', generated = false }) => {
     const { state } = useURL();
     const toast = useToast();
-    const url = `${process.env.REACT_APP_FRONTEND_URL}/${state.urls[state.urls.length - 1].shortId}`;
 
     return (
         <Stack
@@ -44,13 +43,13 @@ const CardTemplate: React.FC<CardTemplateProps> = ({ top, bot, button, backgroun
                         onClick={() => {
                             if (state.urls.length > 0) {
                                 const id = 1;
-                                const content = url;
-                                navigator.clipboard.writeText(content);
+                                const url = `${process.env.REACT_APP_FRONTEND_URL}/${state.urls[state.urls.length - 1].shortId}`;
+                                navigator.clipboard.writeText(url);
                                 if (!toast.isActive(id)) {
                                     toast({
                                         id,
                                         title: 'Copied rlld!',
-                                        description: content,
+                                        description: url,
                                         status: 'info',
                                         duration: 4000,
                                         isClosable: true,
