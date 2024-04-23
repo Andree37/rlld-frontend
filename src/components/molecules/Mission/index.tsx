@@ -35,8 +35,8 @@ const Mission: React.FC<MissionProps> = ({ reference }) => {
                     What is rlld?
                 </Heading>
                 <Text color="white" fontWeight={200} fontSize="s">
-                    A rlld is simply a shorter version of an url, it might redirect you to the original url or to a random meme. Our goal is simply to
-                    make you enjoy a laugh with your friends.
+                    A rlld is simply a shorter version of an url, it might redirect you to the original url or to a random meme. Our goal is simply to make you
+                    enjoy a laugh with your friends.
                 </Text>
                 <Box display="flex" justifyContent="center" alignItems="center" height="60%" mt="15" mb="15">
                     <Image
