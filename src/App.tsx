@@ -1,13 +1,13 @@
+import { Box } from '@chakra-ui/react';
 import React, { useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import './App.css';
-import Main from './pages/main';
+import OutlineButton from './components/atoms/OutlineButton';
 import Header from './components/molecules/Header';
+import HistoryRlld from './components/molecules/HistoryRlld';
 import Mission from './components/molecules/Mission';
 import { useURL } from './contexts/URL';
-import { Box } from '@chakra-ui/react';
-
-import OutlineButton from './components/atoms/OutlineButton';
-import HistoryRlld from './components/molecules/HistoryRlld';
+import Main from './pages/main';
 
 function App() {
     const generateRef = useRef();
@@ -24,6 +24,15 @@ function App() {
 
     return (
         <>
+            <Helmet>
+                <title>rlld</title>
+                <meta name="description" content="Roll your URLs." />
+                <meta property="og:title" content="rlld" />
+                <meta property="og:description" content="rlld your URLs which either goes to the page you want or a meme." />
+                <meta property="og:image" content="/assets/logo.svg" />
+                <meta property="og:url" content="https://rlld.xyz" />
+                <meta property="og:type" content="website" />
+            </Helmet>
             <Header generateRef={generateRef} whatRef={whatRef} careersRef={careersRef} setScreen={setScreen} />
             {screen === 'my' ? <HistoryRlld setScreen={setScreen} /> : <Main generateRef={generateRef} />}
             {!showCopy || screen == 'my' ? (
