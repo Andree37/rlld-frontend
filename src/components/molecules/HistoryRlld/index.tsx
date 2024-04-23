@@ -53,10 +53,7 @@ const HistoryRlld: React.FC<HistoryRlldProps> = ({ setScreen }) => {
                             <Text color={Styleguide.color.lightAndre} fontSize="xs">
                                 {`${process.env.REACT_APP_FRONTEND_URL}/${url.shortId}`}
                             </Text>
-                            {
-                                // eslint-disable-next-line prettier/prettier
-                                <MemeSlider value={url.memePrctg} setValue={() => { }} />
-                            }
+                            {<MemeSlider value={url.memePrctg} setValue={() => {}} />}
                             <Stack flexDirection="row" justifyContent="space-between">
                                 <Stack alignItems="space-around">
                                     <Text>Total rlld clicks</Text>

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Text, Input, Alert, AlertIcon, AlertTitle, AlertDescription, useToast, Box } from '@chakra-ui/react';
 import React, { useCallback, useMemo } from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
@@ -84,7 +83,7 @@ const GenerateURL: React.FC<GenerateURLProps> = () => {
                                 });
                             }
                         }}
-                        onChange={() => { }}
+                        onChange={() => {}}
                         borderColor={Styleguide.color.purpleAndre}
                     />
                 </Box>
